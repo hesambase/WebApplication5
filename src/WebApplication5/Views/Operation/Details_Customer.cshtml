@@ -1,0 +1,28 @@
+﻿@model WebApplication4.Models.Customer
+
+@{ 
+    ViewBag.Title = Model.Name;
+}
+<h1 style="font-family:'B titr'">جزییات مشتری</h1>
+<h1>@Model.Name</h1>
+<div>
+    شناسه: @Model.Id
+</div>
+<div>
+   آدرس: @Model.Address
+</div>
+<div>
+    شماره مشتری: @Model.CustNo
+</div>
+<div>
+    تلفن: @Model.Tel
+</div>
+<div>
+    موبایل: @Model.Mobile
+</div>
+<div>
+    ایمیل: @Model.Email
+</div>
+
+
+<a asp-action="Index" asp-controller="Operation">واحد عملیات</a>

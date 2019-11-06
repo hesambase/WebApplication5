@@ -1,0 +1,26 @@
+﻿@model WebApplication2.Models.Worker
+<h1 style="font-family:'B titr'">جزییات کارگر</h1>
+@{ 
+    ViewBag.Title = Model.Name;
+}
+<h1>@Model.Name</h1>
+<div>
+    شناسه: @Model.Id
+</div>
+<div>
+    نوع سرویس: @Model.Service
+</div>
+<div>
+    شماره کارگر: @Model.WorkerNo
+</div>
+<div>
+    تلفن: @Model.Tel
+</div>
+<div>
+    موبایل: @Model.Mobile
+</div>
+<div>
+    موبایل: @Model.Email
+</div>
+
+<a asp-action="Index" asp-controller="Operation">واحد عملیات</a>

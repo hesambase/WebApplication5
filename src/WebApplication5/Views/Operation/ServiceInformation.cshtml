@@ -1,0 +1,50 @@
+@model WebApplication5.ViewModel.WorkerServiceModel
+
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h2>View</h2>
+
+<form asp-action="View">
+    <div class="form-horizontal">
+        <h4>WorkerServiceModel</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Name" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Service" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="Service" class="form-control"></select>
+                <span asp-validation-for="Service" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="WorkerNo" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="WorkerNo" class="form-control" />
+                <span asp-validation-for="WorkerNo" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

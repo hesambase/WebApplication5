@@ -1,0 +1,225 @@
+﻿@model WebApplication2.ViewModel.HomeIndexViewModel
+@{
+    ViewBag.Title = "Home Page";
+
+}
+ 
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
+    
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="~/images/banner1.svg" alt="ASP.NET" class="img-responsive" />
+            <div class="carousel-caption" role="option">
+                <p>
+                    Learn how to build ASP.NET apps that can run anywhere.
+                    <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
+                        Learn More
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="~/images/banner2.svg" alt="Visual Studio" class="img-responsive" />
+            <div class="carousel-caption" role="option">
+                <p>
+                    There are powerful new features in Visual Studio for building modern web apps.
+                    <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
+                        Learn More
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="~/images/banner3.svg" alt="Package Management" class="img-responsive" />
+            <div class="carousel-caption" role="option">
+                <p>
+                    Bring in libraries from NuGet, Bower, and npm, and automate tasks using Grunt or Gulp.
+                    <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkID=525029&clcid=0x409">
+                        Learn More
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="~/images/banner4.svg" alt="Microsoft Azure" class="img-responsive" />
+            <div class="carousel-caption" role="option">
+                <p>
+                    Learn how Microsoft's Azure cloud platform allows you to build, deploy, and scale web apps.
+                    <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkID=525027&clcid=0x409">
+                        Learn More
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+<div class="row">
+    <div class="col-md-7">
+        <h1 style="font-family:'B Arshia'">
+            لیست تمام کارگران
+        </h1>
+        <table class="tab-content table-bordered" style="overflow-y:auto;display:block; height:100px;border-style:solid; border-width:3px; border-spacing:3px;border-color:navy; background-color:gainsboro">
+            <tr class="row">
+                <th scope="col" style="border-style:solid;border-color:navy; font-family:'B Yekan'">شماره</th>
+                <th scope="col" style="border-style:solid;border-color:navy;font-family:'B Yekan'">نام و نام خانوادگی</th>
+                <th scope="col" style="border-style:solid;border-color:navy;font-family:'B Yekan'">عملیات</th>
+            </tr>
+            @foreach (var worker in Model.Workers)
+            {
+                <tr class="row">
+                    <td class="col-md-3" style="border-style:inset; border-width:2px; border-color:royalblue;   font-family:'B Yekan'">
+                        @worker.Id
+                    <td class="col-md-5" style="border-style:inset; border-width:2px; border-color:royalblue;   font-family:'B Yekan'">
+                        @worker.Name
+                    <td class="col-md-12" style="border-style:inset; border-width:2px; border-color:royalblue;   font-family:'B Yekan'">
+                    
+                        @*<a href="/home/details/@worker.Id">Details</a>
+                            @Html.ActionLink("Go", "Details", new { id = worker.Id })*@
+                        <a asp-action="Details_Worker" asp-route-id="@worker.Id">اطلاعات بیشتر</a>&nbsp;
+                        <a asp-action="Edit_Worker" asp-route-id="@worker.Id" style="color:forestgreen">ویرایش</a>&nbsp;
+                        @using (Html.BeginForm("Delete_Worker", "Operation", FormMethod.Post))
+                        {
+                        <a asp-action="Delete_Worker" asp-route-id="@worker.Id" style="color:red" onclick="Confirm()">حذف</a>
+                        }
+                     </td>
+
+                </tr>
+
+            }
+        </table>
+    </div>
+</div>
+    <a asp-action="Create_Worker" style="font-family:'B Araz';font-size:20pt">اضافه کردن کارگر</a>
+<div class="row">
+    <div class="col-md-7">
+
+        <h1 style="font-family:'B Arshia'">
+        لیست تمام مشتریان
+    </h1>
+    <table class="tab-content table-bordered pre-scrollable" style="overflow-y:auto;display:block; height:100px; border-style:solid; border-width:3px; border-spacing:3px;border-color:navy; background-color:gainsboro">
+        <tr class="row">
+            <th scope="col" style="border-style:solid;border-color:navy; font-family:'B Yekan'">شماره</th>
+            <th scope="col" style="border-style:solid;border-color:navy;font-family:'B Yekan'">نام و نام خانوادگی</th>
+            <th scope="col" style="border-style:solid;border-color:navy;font-family:'B Yekan'">عملیات</th>
+        </tr>
+         @foreach (var customer in Model.Customers)
+        {
+           
+               <tr class="row">
+                <td class="col-md-3" style="border-style:inset; border-width:2px; border-color:royalblue;   font-family:'B Yekan'">
+                    @customer.Id
+                </td>
+                <td class="col-md-5" style="border-style:inset; border-width:2px; border-color:royalblue; font-family:'B Yekan'">
+                    @customer.Name
+                </td>
+                <td class="col-md-12" style="border-style:inset; border-width:2px; border-color:royalblue; font-family:'B Yekan'">
+                    <a asp-action="Details_Customer" asp-route-id="@customer.Id" >  اطلاعات بیشتر</a>&nbsp;
+                    <a asp-action="Edit_Customer" asp-route-id="@customer.Id" style="color:forestgreen">  ویرایش</a>&nbsp;
+                   @using (Html.BeginForm("Delete_Customer", "Operation", FormMethod.Post))
+                   {
+                     <a asp-action="Delete_Customer" asp-route-id="@customer.Id" style="color:red" onclick="Confirm()">  حذف</a>
+                   }
+                 </td>
+
+            </tr>
+
+        }
+    </table>
+    <a asp-action="Create_Customer"style="font-family:'B Araz';font-size:20pt">اضافه کردن مشتری</a>
+ </div>
+    </div>
+   
+    <div class="row">
+        <div class="col-md-11">
+
+            <h1 style="font-family:'B Arshia'">
+                لیست تمام سرویس ها
+            </h1>
+            <table class="tab-content table-bordered pre-scrollable" style="overflow-y:auto;display:block; height:100px; border-style:solid; border-width:3px; border-spacing:3px;border-color:navy; background-color:gainsboro">
+                <tr class="row">
+                    <th scope="col" style="border-style:solid;border-color:navy; font-family:'B Yekan'">شماره</th>
+                    <th scope="col" style="border-style:solid;border-color:navy;font-family:'B Yekan'">سریال مشتری</th>
+                    <th scope="col" style="border-style:solid;border-color:navy;font-family:'B Yekan'">سریال کارگر</th>
+                    <th scope="col" style="border-style:solid;border-color:navy;font-family:'B Yekan'">زمان سرویس دهی</th>
+                    <th scope="col" style="border-style:solid;border-color:navy;font-family:'B Yekan'">هزینه</th>
+                    <th scope="col" style="border-style:solid;border-color:navy;font-family:'B Yekan'">تاریخ ثبت</th>
+                </tr>
+                @foreach (var service in Model.Service)
+                {
+
+                    <tr class="row">
+                        <td class="col-md-2" style="border-style:inset; border-width:2px; border-color:royalblue;   font-family:'B Yekan'">
+                            @service.Id
+                        </td>
+                        <td class="col-md-2" style="border-style:inset; border-width:2px; border-color:royalblue; font-family:'B Yekan'">
+                            @service.CustID
+                        </td>
+                        <td class="col-md-2" style="border-style:inset; border-width:2px; border-color:royalblue; font-family:'B Yekan'">
+                            @service.WorkerID
+                        </td>
+                        <td class="col-md-2" style="border-style:inset; border-width:2px; border-color:royalblue; font-family:'B Yekan'">
+                            @service.ServiceTime
+                        </td>
+                        <td class="col-md-2" style="border-style:inset; border-width:2px; border-color:royalblue; font-family:'B Yekan'">
+                            @service.Cost
+                        </td>
+                        <td class="col-md-2" style="border-style:inset; border-width:2px; border-color:royalblue; font-family:'B Yekan'">
+                            @service.RegisterDate
+                        </td>
+                        <td class="col-md-12" style="border-style:inset; border-width:2px; border-color:royalblue; font-family:'B Yekan'">
+                            <a asp-action="Edit_ServiceList" asp-route-id="@service.Id" style="color:forestgreen">  ویرایش</a>&nbsp;
+                           @using (Html.BeginForm("Delete_ServiceList", "Operation", FormMethod.Post))
+                           {
+                             <a asp-action="Delete_ServiceList" asp-route-id="@service.Id" style="color:red" onclick="Confirm()">  حذف</a>
+                           }
+                         </td>
+
+                    </tr>
+
+                }
+
+
+            </table>
+            <a asp-action="Create_ServiceList" style="font-family:'B Araz';font-size:20pt">اضافه کردن سرویس</a>
+        </div>
+    </div>
+<a asp-area="" asp-controller="Account" asp-action="Register" style="font-family:'B Araz';font-size:20pt">ثبت نام</a>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+        function Confirm() {
+            var input = $("<input />");
+            input.attr("type", "hidden").attr("name", "confirm_value");
+            if (confirm("آیا مایل به حذف ردیف هستید؟")) {
+                input.val("Yes");
+            } else {
+                input.val("No");
+            }
+            $("form")[0].appendChild(input[0]);
+        }
+</script>
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+            $(function () {
+              alert("@ViewBag.Message")
+            });
+    </script>
+}
+@*@section footer{
+    @Model.CurrentMessage
+
+}*@

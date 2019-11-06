@@ -1,0 +1,27 @@
+﻿@model WebApplication4.Models.ServiceList
+
+@{
+    ViewBag.Title = Model.Id;
+}
+<h1>@Model.Id</h1>
+<div>
+    شناسه: @Model.Id
+</div>
+<div>
+    شناسه مشتری: @Model.CustID
+</div>
+<div>
+    شناسه کارگر: @Model.WorkerID
+</div>
+<div>
+    زمان سرویس دهی: @Model.ServiceTime
+</div>
+<div>
+    هزینه: @Model.Cost
+</div>
+<div>
+    زمان ثبت: @Model.RegisterDate
+</div>
+
+
+<a asp-action="Index" asp-controller="Operation">واحد عملیات</a>

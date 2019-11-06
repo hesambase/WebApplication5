@@ -1,0 +1,54 @@
+﻿@*@model WebApplication5.ViewModel.WorkerServiceModel*@
+@model WebApplication5.Models.ServiceInfoWorker
+@{
+    ViewBag.Title = Model.SId;
+}
+
+<h2>اطلاعات سرویس</h2>
+
+<form asp-action="ServiceInformation">
+  
+        
+        <hr />
+        
+       
+            <div class="col-md-10">
+           شناسه سرویس:   @Model.SId
+            </div>
+       
+        
+           
+            <div class="col-md-10">
+             نام مشتری:  @Model.CName
+            </div>
+      
+       
+            
+            <div class="col-md-10">
+             نام کارگر:   @Model.WName
+            </div>
+       
+       
+          
+            <div class="col-md-10">
+            نوع سرویس:    @Model.ServiceType
+            </div>
+        
+       
+            <div class="col-md-10">
+            آدرس:    @Model.Address
+            </div>
+       
+        
+            <div class="col-md-10">
+          زمان سرویس دهی-به ساعت :     @Model.ServiceTime
+            </div>
+       
+
+</form>
+  @*  <a asp-action="Index">Back to List</a>*@
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

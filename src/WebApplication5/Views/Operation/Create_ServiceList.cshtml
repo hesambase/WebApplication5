@@ -1,0 +1,38 @@
+﻿@using WebApplication4.Models
+@model ServiceList
+
+@{
+    ViewBag.Title = "ایجاد";
+}
+<h1 style="font-family:'B titr'">ثبت سرویس جدید</h1>
+<form method="post">
+    <div>
+        <label asp-for="CustID">شناسه مشتری</label>
+        <input asp-for="CustID" class="form-control" />
+        <span asp-validation-for="CustID"></span>
+    </div>
+
+    <div>
+
+        <label asp-for="WorkerID">شناسه کارگر</label>
+        <input asp-for="WorkerID" class="form-control" />
+        <span asp-validation-for="WorkerID"></span>
+    </div>
+    <div>
+        <label asp-for="ServiceTime">زمان سرویس دهی</label>
+        <input asp-for="ServiceTime" class="form-control" />
+        <span asp-validation-for="ServiceTime"></span>
+    </div>
+    <div>
+        <label asp-for="Cost">هزینه</label>
+        <input asp-for="Cost" class="form-control" />
+        <span asp-validation-for="Cost"></span>
+    </div>
+   
+    <br />
+    <div>
+        <input type="submit" name="save" value="Save" class="form-control-static " />
+
+        <a asp-action="Index" asp-controller="Operation">خانه</a>
+    </div>
+</form>

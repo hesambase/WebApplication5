@@ -1,0 +1,56 @@
+﻿@using WebApplication2.Models
+@model Worker
+
+@*@{
+    ViewBag.Title = Model.Name;
+}
+<h1>@Model.Name</h1>*@
+<h1 style="font-family:'B titr'">ویرایش اطلاعات کارگر</h1>
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Id"></label>
+        <input asp-for="Id" type="text" readonly class="form-control" />
+    </div>
+    <div>
+
+        <label asp-for="Name">نام و نام خانوادگی</label>
+        <input asp-for="Name" type="text" class="form-control"/>
+        <span asp-validation-for="Name"></span>
+    </div>
+
+    <div>
+
+        <label asp-for="Service">نوع سرویس</label>
+        <select asp-for="Service" asp-items="@Html.GetEnumSelectList<ServiceType>()"  class="form-control"></select>
+        <span asp-validation-for="Service"></span>
+    </div>
+    <div>
+        <label asp-for="WorkerNo">شماره کارگر</label>
+        <input asp-for="WorkerNo"  class="form-control"/>
+        <span asp-validation-for="WorkerNo" ></span>
+    </div>
+    <div>
+        <label asp-for="Tel">تلفن</label>
+        <input asp-for="Tel"  class="form-control"/>
+        <span asp-validation-for="Tel"></span>
+    </div>
+    <div>
+        <label asp-for="Mobile">موبایل</label>
+        <input asp-for="Mobile"  class="form-control"/>
+        <span asp-validation-for="Mobile"></span>
+    </div>
+    <div>
+        <label asp-for="Email">ایمیل</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div>
+        <label asp-for="Password">رمز عبور</label>
+        <input asp-for="Password"  class="form-control"/>
+        <span asp-validation-for="Password"></span>
+    </div>
+    <input type="submit" name="save" value="Save" />
+    <a asp-action="Index" asp-controller="Operation">واحد عملیات</a>
+   
+</form>
+
